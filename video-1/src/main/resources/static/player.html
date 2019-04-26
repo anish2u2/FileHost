@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Player</title>
+</head>
+
+<body>
+
+<div id="videoSelect">
+    <button data-video-url="http://localhost:8080/video">Play Video 1</button>
+    <button data-video-url="http://localhost:8080/play">Play Video 2</button>
+</div>
+
+<video id="player" controls></video>
+</body>
+
+<script type="text/javascript">
+function swapVideo() {
+    player.src = this.getAttribute("data-video-url");
+    player.load();
+    player.play();
+}
+
+var videoPlayButtons = document.querySelectorAll("button"),
+    player = document.getElementById("player");
+
+for (var i=0; i<videoPlayButtons.length; i++){
+    videoPlayButtons[i].addEventListener('click', swapVideo);
+}
+</script>
+</html>

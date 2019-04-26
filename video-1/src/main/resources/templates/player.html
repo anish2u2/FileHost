@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Device</title>
+</head>
+
+<body>
+<table th:each="file : ${files}">
+	<tr>
+		<b><u><a  th:attr="onclick=|trigger('${hostAddress}','${dir + file}')|"><span style="color:blue;" th:text="${dir + file}"></span><br></br></a></u></b>
+	</tr>
+</table>
+	
+
+</body>
+
+<script type="text/javascript">
+	function trigger(address,loc){
+		var fLoc=((loc.replace(/&/g," AND ")).replace('['," br- ")).replace(']'," -br ");
+		window.open("http://"+address+":8080/player?filePath="+fLoc);
+	}
+</script>
+
+</html>
